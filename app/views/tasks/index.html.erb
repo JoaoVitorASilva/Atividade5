@@ -1,0 +1,35 @@
+<%= provide :titulo, "Tarefas" %>
+<div class="table-responsive-md">
+    <h2>Tarefas</h2>
+    
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" width="20%">Título</th>
+                <th scope="col" width="30%">Descrição</th>
+                <th scope="col" width="10%">Data</th>
+                <th scope="col" width="10%">Status</th>
+
+                <th scope="col" width="30%">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @tasks.each do |task| %>
+                <tr>
+                    <td> <%= task.title() %> </td>
+                    <td> <%= task.description() %> </td>
+                    <td> <%= task.due().strftime("%d/%b/%y") %> </td>
+                    <td> <%= task.done() ? "Concluída" : "Pendente" %> </td>
+                    <td>
+                        <%= link_to "Mostrar", task, class: "btn btn-info" %>
+                        <%= link_to "Editar", edit_task_path(task), class: "btn btn-warning" %>
+                        <%= link_to "Apagar", task, method: :delete, class: "btn btn-danger" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= link_to "Criar nova Tarefa", new_task_path, class: "btn btn-success" %>
+</div >
+                        

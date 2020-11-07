@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h2><%= @task.title() %></h2>
+    <span class="label label-primary">
+        Última atualização em <%= @task.updated_at().strftime("%d/%b/%y") %>
+    </span >
+</div >
+<div class="panel panel-default">
+    <div class="panel-body">
+        <p> <strong> DESCRIÇÃO </strong> </p>
+        <p> <%= @task.description() %> </p>
+
+        <p><strong>DATA: </strong> <%= @task.due().strftime("%d/%b/%y")  %></p>
+        <p><strong>STATUS: </strong> <%= @task.done() ? "Concluído" : "Pendente" %> </p>
+    </div>
+    <div class="text-right">
+        <%= link_to "Voltar", tasks_path, class: "btn btn-outline-secondary" %>
+    </div>
+</div >
+ 
